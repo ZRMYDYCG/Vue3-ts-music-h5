@@ -1,19 +1,385 @@
 # vue3网易云音乐
 
+## 项目架构
+
+```bash
+|-- vue3-music-netease
+    |-- .browserslistrc
+    |-- .eslintrc.js
+    |-- .gitignore
+    |-- babel.config.js
+    |-- package-lock.json
+    |-- package.json
+    |-- postcss.config.js
+    |-- README.md
+    |-- tsconfig.json
+    |-- vue.config.js
+    |-- .idea
+    |   |-- .gitignore
+    |   |-- modules.xml
+    |   |-- v3_ts_music.iml
+    |   |-- vcs.xml
+    |   |-- workspace.xml
+    |   |-- inspectionProfiles
+    |       |-- Project_Default.xml
+    |-- public
+    |   |-- favicon.ico
+    |   |-- index.html
+    |-- screenshot
+    |   |-- boke.jpg
+    |   |-- cloud.jpg
+    |   |-- comment.jpg
+    |   |-- conversation.jpg
+    |   |-- dark01.jpg
+    |   |-- dark02.jpg
+    |   |-- dark03.jpg
+    |   |-- days.jpg
+    |   |-- digitAlbum.jpg
+    |   |-- djdetail.jpg
+    |   |-- event.jpg
+    |   |-- guanzhu.jpg
+    |   |-- history.jpg
+    |   |-- home.jpg
+    |   |-- login.jpg
+    |   |-- lyric.jpg
+    |   |-- mine.jpg
+    |   |-- msg.jpg
+    |   |-- player.jpg
+    |   |-- sheetDetail.jpg
+    |   |-- sheetSquare.jpg
+    |   |-- sideMenu.jpg
+    |   |-- singerDetail.jpg
+    |   |-- singerlist.jpg
+    |   |-- songComment.jpg
+    |   |-- toplist.jpg
+    |   |-- userInfo.jpg
+    |-- src
+        |-- App.vue
+        |-- main.ts
+        |-- permission.ts
+        |-- shims-vue.d.ts
+        |-- api
+        |   |-- album.ts
+        |   |-- comment.ts
+        |   |-- dj.ts
+        |   |-- event.ts
+        |   |-- home.ts
+        |   |-- msg.ts
+        |   |-- recent.ts
+        |   |-- search.ts
+        |   |-- sheet.ts
+        |   |-- singer.ts
+        |   |-- song.ts
+        |   |-- toplist.ts
+        |   |-- user.ts
+        |   |-- video.ts
+        |-- assets
+        |   |-- logo.png
+        |   |-- iconfont
+        |   |   |-- demo.css
+        |   |   |-- demo_index.html
+        |   |   |-- iconfont.css
+        |   |   |-- iconfont.js
+        |   |   |-- iconfont.json
+        |   |   |-- iconfont.ttf
+        |   |   |-- iconfont.woff
+        |   |   |-- iconfont.woff2
+        |   |-- images
+        |   |   |-- player
+        |   |   |   |-- disc-plus.png
+        |   |   |   |-- disc.png
+        |   |   |   |-- disc_default.png
+        |   |   |   |-- disc_light-plus.png
+        |   |   |   |-- loading.gif
+        |   |   |   |-- needle-ab.png
+        |   |   |-- public
+        |   |       |-- active.gif
+        |   |       |-- header.png
+        |   |       |-- heijiao.png
+        |   |       |-- logo.jpg
+        |   |       |-- screen.jpg
+        |   |-- styles
+        |       |-- animate.css
+        |       |-- global.less
+        |       |-- mode.less
+        |-- components
+        |   |-- BigPlayer
+        |   |   |-- index.vue
+        |   |-- Comment
+        |   |   |-- commentItem.vue
+        |   |   |-- commentPopup.vue
+        |   |-- DjItem
+        |   |   |-- index.vue
+        |   |-- EventCom
+        |   |   |-- eventItem.vue
+        |   |-- MiniPlayer
+        |   |   |-- index.vue
+        |   |-- msg
+        |   |   |-- avatar.vue
+        |   |   |-- conversationItem.vue
+        |   |   |-- msgBubble.vue
+        |   |   |-- msgItem.vue
+        |   |   |-- sendBox.vue
+        |   |   |-- messageElement
+        |   |       |-- imgMsg.vue
+        |   |       |-- listenTogether.vue
+        |   |       |-- sheetMsg.vue
+        |   |       |-- songMsg.vue
+        |   |       |-- textMsg.vue
+        |   |       |-- timeMsg.vue
+        |   |-- MvItem
+        |   |   |-- index.vue
+        |   |-- mySheetList
+        |   |   |-- index.vue
+        |   |   |-- sheetItem.vue
+        |   |-- NavBar
+        |   |   |-- index.vue
+        |   |-- PlayList
+        |   |   |-- index.vue
+        |   |   |-- listPopup.vue
+        |   |-- Screen
+        |   |   |-- index.vue
+        |   |-- ScreenPoster
+        |   |   |-- index.vue
+        |   |-- Scroll
+        |   |   |-- index.vue
+        |   |   |-- scrollBanner.vue
+        |   |-- ShareFriend
+        |   |   |-- index.vue
+        |   |-- SingerAlbumItem
+        |   |   |-- index.vue
+        |   |-- songItem
+        |   |   |-- index.vue
+        |   |   |-- songMenu.vue
+        |   |-- songListItem
+        |   |   |-- index.vue
+        |   |-- UserItem
+        |   |   |-- index.vue
+        |   |-- VerifyCode
+        |       |-- index.vue
+        |-- layout
+        |   |-- index.vue
+        |   |-- miniplayout.vue
+        |   |-- components
+        |       |-- SideMenu.vue
+        |       |-- TabBar.vue
+        |-- libs
+        |   |-- city.ts
+        |-- router
+        |   |-- index.ts
+        |-- store
+        |   |-- index.ts
+        |   |-- msg.ts
+        |   |-- player.ts
+        |   |-- system.ts
+        |   |-- user.ts
+        |-- types
+        |   |-- api
+        |   |   |-- album.ts
+        |   |   |-- comment.ts
+        |   |   |-- dj.ts
+        |   |   |-- event.ts
+        |   |   |-- home.ts
+        |   |   |-- msg.ts
+        |   |   |-- recent.ts
+        |   |   |-- search.ts
+        |   |   |-- sheet.ts
+        |   |   |-- singer.ts
+        |   |   |-- song.ts
+        |   |   |-- toplist.ts
+        |   |   |-- user.ts
+        |   |   |-- video.ts
+        |   |-- public
+        |   |   |-- album.ts
+        |   |   |-- cloudDisk.ts
+        |   |   |-- comment.ts
+        |   |   |-- comprehensive.ts
+        |   |   |-- dj.ts
+        |   |   |-- event.ts
+        |   |   |-- index.ts
+        |   |   |-- msg.ts
+        |   |   |-- mv.ts
+        |   |   |-- radio.ts
+        |   |   |-- sheet.ts
+        |   |   |-- singer.ts
+        |   |   |-- user.ts
+        |   |   |-- video.ts
+        |   |   |-- voice.ts
+        |   |-- store
+        |       |-- player.ts
+        |-- utils
+        |   |-- auth.ts
+        |   |-- back.ts
+        |   |-- decodeText.ts
+        |   |-- dom.ts
+        |   |-- emojiMap.ts
+        |   |-- enum.ts
+        |   |-- eventBus.ts
+        |   |-- index.ts
+        |   |-- mode.ts
+        |   |-- request.ts
+        |   |-- song.ts
+        |-- vant
+        |   |-- index.ts
+        |-- views
+            |-- album
+            |   |-- detail.vue
+            |   |-- index.vue
+            |   |-- components
+            |       |-- albumItem.vue
+            |       |-- digitAlbum.vue
+            |       |-- newAlbum.vue
+            |       |-- sheetInfo.vue
+            |       |-- singleDigit.vue
+            |-- boke
+            |   |-- djCategory.vue
+            |   |-- djDetail.vue
+            |   |-- index.vue
+            |   |-- components
+            |       |-- sheetInfo.vue
+            |       |-- djCategory
+            |       |   |-- djList.vue
+            |       |-- listen
+            |       |   |-- index.vue
+            |       |   |-- popularItem.vue
+            |       |   |-- topList.vue
+            |       |   |-- topPopular.vue
+            |       |-- story
+            |       |   |-- index.vue
+            |       |-- suggest
+            |           |-- banner.vue
+            |           |-- index.vue
+            |           |-- recommend.vue
+            |           |-- recommendItem.vue
+            |-- conversation
+            |   |-- index.vue
+            |-- daysRecommend
+            |   |-- history.vue
+            |   |-- index.vue
+            |   |-- components
+            |       |-- dateList.vue
+            |-- editSheet
+            |   |-- editDesc.vue
+            |   |-- editName.vue
+            |   |-- editTag.vue
+            |   |-- index.vue
+            |-- fansFollows
+            |   |-- index.vue
+            |   |-- components
+            |       |-- fans.vue
+            |       |-- follows.vue
+            |-- follow
+            |   |-- index.vue
+            |-- home
+            |   |-- index.vue
+            |   |-- components
+            |       |-- menu.vue
+            |       |-- newMv.vue
+            |       |-- newSong.vue
+            |       |-- newSongItem.vue
+            |       |-- recommendSongList.vue
+            |       |-- swiper.vue
+            |-- likeList
+            |   |-- index.vue
+            |-- login
+            |   |-- emailLogin.vue
+            |   |-- index.vue
+            |   |-- inputCode.vue
+            |   |-- phoneLogin.vue
+            |-- mine
+            |   |-- cloudDisk.vue
+            |   |-- index.vue
+            |   |-- recentPlay.vue
+            |   |-- components
+            |       |-- collectSheet.vue
+            |       |-- createPopup.vue
+            |       |-- createSheet.vue
+            |       |-- likeList.vue
+            |       |-- popupMenu.vue
+            |       |-- sheet.vue
+            |       |-- sheetItem.vue
+            |       |-- cloudDisk
+            |       |   |-- cloudItem.vue
+            |       |   |-- uploadMusic.vue
+            |       |-- recentPlay
+            |           |-- albumItem.vue
+            |           |-- djItem.vue
+            |           |-- recentAlbum.vue
+            |           |-- recentDj.vue
+            |           |-- recentSheet.vue
+            |           |-- recentSong.vue
+            |           |-- recentVideo.vue
+            |           |-- recentVoice.vue
+            |           |-- sheetItem.vue
+            |           |-- videoItem.vue
+            |           |-- voiceItem.vue
+            |-- msg
+            |   |-- index.vue
+            |-- mv
+            |   |-- index.vue
+            |   |-- components
+            |       |-- mvTop.vue
+            |       |-- topMvItem.vue
+            |-- search
+            |   |-- index.vue
+            |   |-- components
+            |       |-- album.vue
+            |       |-- albumItem.vue
+            |       |-- comprehensive.vue
+            |       |-- lyric.vue
+            |       |-- lyricItem.vue
+            |       |-- mv.vue
+            |       |-- mvItem.vue
+            |       |-- radioStation.vue
+            |       |-- radioStationItem.vue
+            |       |-- sheet.vue
+            |       |-- singer.vue
+            |       |-- single.vue
+            |       |-- suggestResult.vue
+            |       |-- user.vue
+            |       |-- videoCom.vue
+            |       |-- videoItem.vue
+            |-- sheetSquare
+            |   |-- index.vue
+            |   |-- components
+            |       |-- sheetItem.vue
+            |       |-- sheetList.vue
+            |-- singer
+            |   |-- detail.vue
+            |   |-- index.vue
+            |   |-- songs.vue
+            |   |-- components
+            |       |-- singerItem.vue
+            |-- songSheetDetail
+            |   |-- index.vue
+            |   |-- components
+            |       |-- sheetInfo.vue
+            |-- topList
+            |   |-- index.vue
+            |   |-- components
+            |       |-- topItem.vue
+            |-- userInfo
+            |   |-- index.vue
+            |   |-- components
+            |       |-- collectSheet.vue
+            |       |-- createSheet.vue
+            |       |-- eventList.vue
+            |       |-- musicTaste.vue
+            |-- videoDetail
+            |   |-- index.vue
+            |   |-- components
+            |       |-- playVideo.vue
+            |-- village
+                |-- index.vue
+
+```
+
 ## 介绍
-> 个人练习vue3.0项目 使用Vue3 + TypeScript + Pinia + Vant 实现H5网易云音乐播放播放器
-## 在线演示地址
-[http://101.35.109.105/home](http://101.35.109.105/home)
-## 项目
-- 开发框架：Vue3
-- 脚手架：Vue-cli
-- 组件库：Vant
-- 状态管理：Pinia
-- 语法扩展：TypeScript、Less
-- 打包工具：Webpack
-- 代码规范：ESLint
+
+网易云音乐项目, 使用了网易云 Api, 实现了网易云音乐的大部分功能, 包括歌曲、歌单、mv、电台、排行榜等。
 
 ## 实现功能
+
 1. 邮箱登录、手机号登录
 2. 首页
 3. 歌单详情
@@ -35,6 +401,7 @@
 19. 歌单创建、编辑
 
 ## 项目截图
+
 ### 登录
 ![image](https://reactlmh.oss-cn-beijing.aliyuncs.com/cloudmusic/screenshot/login.jpg)
 ### 首页
@@ -90,29 +457,28 @@
 ### 歌词滚动
 ![image](./screenshot/lyric.jpg)
 
-
-
 ## 接口地址项目 https://github.com/Binaryify/NeteaseCloudMusicApi
 
 ## Project setup
-```
+
+```bash
 npm install
 ```
 
 ### Compiles and hot-reloads for development
-```
+
+```bash
 npm run serve
 ```
 
 ### Compiles and minifies for production
-```
+
+```bash
 npm run build
 ```
 
 ### Lints and fixes files
-```
+
+```bash
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
